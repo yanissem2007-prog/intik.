@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="INTIK">
+  <rect width="128" height="128" rx="28" fill="#0A0A0A" />
+  <path d="M24 28h22v72H24zM54 28h18l14 35V28h18v72H86L72 65v35H54z" fill="#FFFFFF" />
+  <path d="M106 28h-18L72 50l18 22h18L90 50z" fill="#FF7A00" />
+</svg>
