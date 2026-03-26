@@ -7,10 +7,10 @@ import PracticalInfoSection from '../components/home/PracticalInfoSection'
 import SocialSection from '../components/home/SocialSection'
 import VideoSection from '../components/home/VideoSection'
 
-export default function Home() {
+export default function Home({ introComplete = true }) {
   return (
     <>
-      <HeroSection />
+      <HeroSection introComplete={introComplete} />
       <AboutPreview />
       <BestSellers />
       <ExperienceSection />

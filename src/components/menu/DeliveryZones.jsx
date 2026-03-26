@@ -11,7 +11,7 @@ export default function DeliveryZones() {
       <div className="page-shell">
         <Reveal>
           <SectionTitle
-            description="Code couleur inspire du visuel fourni, lecture rapide et detail par secteur pour savoir combien coute la livraison avant d’appeler."
+            description="Code couleur inspire du visuel fourni, lecture rapide et detail par secteur pour savoir combien coute la livraison avant d'appeler."
             eyebrow="Livraison / zones"
             light
             title="Les frais varient selon ta zone."
@@ -33,9 +33,7 @@ export default function DeliveryZones() {
           {deliveryAreas.map((item, index) => (
             <Reveal delay={index * 0.02} key={item.area}>
               <article className="rounded-[24px] border border-white/8 bg-white/5 px-5 py-4">
-                <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-intik-orange">
-                  {item.area}
-                </p>
+                <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-intik-orange">{item.area}</p>
                 <p className="mt-3 text-lg font-bold text-white">{item.fee}</p>
               </article>
             </Reveal>

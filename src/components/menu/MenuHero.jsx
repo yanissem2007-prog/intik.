@@ -19,8 +19,8 @@ export default function MenuHero() {
               Une carte courte, lisible et tres chargee.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/68 sm:text-lg">
-              Burgers, loaded fries, pasta, extras et boissons. L’essentiel est la, avec une mise en
-              page claire et des produits qui gardent une vraie personnalite.
+              Burgers, loaded fries, pasta, extras et boissons. L'essentiel est la, avec une mise en page
+              claire et des produits qui gardent une vraie personnalite.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="tel:0793331700" size="lg">
@@ -33,18 +33,14 @@ export default function MenuHero() {
                 to="/contact"
                 variant="outline"
               >
-                Besoin d’aide
+                Besoin d'aide
               </Button>
             </div>
           </Reveal>
 
           <Reveal delay={0.1} from="left">
             <div className="glass-panel overflow-hidden">
-              <img
-                alt="Menu hero INTIK"
-                className="aspect-[4/4.4] w-full object-cover"
-                src={bestSellers[0].image}
-              />
+              <img alt="Menu hero INTIK" className="aspect-[4/4.4] w-full object-cover" src={bestSellers[0].image} />
             </div>
           </Reveal>
         </div>

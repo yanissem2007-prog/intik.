@@ -31,9 +31,9 @@ export default function HelpCards() {
       <div className="page-shell">
         <Reveal>
           <SectionTitle
-            description="Tout ce qu’il faut pour commander, venir, manger sur place ou verifier les infos de service avant de bouger."
-            eyebrow="Mode d’emploi"
-            title="Besoin d’aide, mais en version propre et rapide."
+            description="Tout ce qu'il faut pour commander, venir, manger sur place ou verifier les infos de service avant de bouger."
+            eyebrow="Mode d'emploi"
+            title="Besoin d'aide, mais en version propre et rapide."
           />
         </Reveal>
 
@@ -41,9 +41,7 @@ export default function HelpCards() {
           {orderSteps.map((step, index) => (
             <Reveal delay={index * 0.05} key={step.step}>
               <article className="glass-panel h-full p-6">
-                <p className="text-sm font-extrabold uppercase tracking-[0.24em] text-intik-orange">
-                  {step.step}
-                </p>
+                <p className="text-sm font-extrabold uppercase tracking-[0.24em] text-intik-orange">{step.step}</p>
                 <h3 className="mt-4 font-display text-4xl leading-none text-intik-black">{step.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-black/64">{step.description}</p>
               </article>

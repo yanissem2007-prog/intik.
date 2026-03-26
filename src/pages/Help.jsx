@@ -11,8 +11,8 @@ export default function Help() {
           <Reveal>
             <SectionTitle
               description="FAQ, accessibilite, parking, paiements, pets, services et mode de commande. Tout est regroupe ici proprement."
-              eyebrow="Besoin d’aide"
-              title="Trouver l’info vite, sans friction."
+              eyebrow="Besoin d'aide"
+              title="Trouver l'info vite, sans friction."
             />
           </Reveal>
         </div>

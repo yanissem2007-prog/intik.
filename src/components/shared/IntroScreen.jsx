@@ -1,132 +1,203 @@
-import { motion } from 'framer-motion'
-import { useEffect } from 'react'
+import { useLayoutEffect, useRef } from 'react'
+import usePrefersReducedMotion from '../../hooks/usePrefersReducedMotion'
+import { setupGsap } from '../../lib/animations/gsap'
 import { siteMeta } from '../../data/siteData'
 
-const sloganWords = siteMeta.slogan.split(' ')
+const sloganWords = ['Alger', 'Late-night', 'Brand experience']
+const brandLetters = siteMeta.name.split('')
 
 export default function IntroScreen({ onComplete }) {
-  useEffect(() => {
-    const timer = window.setTimeout(onComplete, 3200)
+  const rootRef = useRef(null)
+  const panelRef = useRef(null)
+  const glowRef = useRef(null)
+  const eyebrowRef = useRef(null)
+  const logoRef = useRef(null)
+  const meterRef = useRef(null)
+  const brandRefs = useRef([])
+  const sloganRefs = useRef([])
+  const prefersReducedMotion = usePrefersReducedMotion()
 
-    return () => window.clearTimeout(timer)
-  }, [onComplete])
+  useLayoutEffect(() => {
+    if (!rootRef.current) {
+      return undefined
+    }
+
+    const { gsap } = setupGsap()
+
+    if (prefersReducedMotion) {
+      const timer = window.setTimeout(onComplete, 500)
+
+      return () => window.clearTimeout(timer)
+    }
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+        onComplete,
+      })
+
+      tl.set(rootRef.current, { autoAlpha: 1 })
+        .fromTo(
+          glowRef.current,
+          { autoAlpha: 0, scale: 0.9 },
+          { autoAlpha: 1, scale: 1.02, duration: 1.6, ease: 'sine.out' },
+        )
+        .fromTo(
+          panelRef.current,
+          { autoAlpha: 0, y: 28, scale: 0.965, rotateX: 12, filter: 'blur(12px)' },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            rotateX: 0,
+            filter: 'blur(0px)',
+            duration: 1.3,
+            ease: 'expo.out',
+          },
+          0.08,
+        )
+        .fromTo(
+          eyebrowRef.current,
+          { autoAlpha: 0, y: 12 },
+          { autoAlpha: 1, y: 0, duration: 0.7 },
+          0.3,
+        )
+        .fromTo(
+          brandRefs.current,
+          { autoAlpha: 0, yPercent: 88, rotateX: -50, filter: 'blur(14px)' },
+          {
+            autoAlpha: 1,
+            yPercent: 0,
+            rotateX: 0,
+            filter: 'blur(0px)',
+            duration: 1,
+            stagger: 0.06,
+          },
+          0.38,
+        )
+        .fromTo(
+          logoRef.current,
+          { autoAlpha: 0, scale: 0.92, y: 16, rotate: -4 },
+          { autoAlpha: 1, scale: 1, y: 0, rotate: 0, duration: 1 },
+          0.58,
+        )
+        .fromTo(
+          sloganRefs.current,
+          { autoAlpha: 0, y: 12, filter: 'blur(8px)' },
+          {
+            autoAlpha: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.72,
+            stagger: 0.06,
+          },
+          0.82,
+        )
+        .fromTo(
+          meterRef.current,
+          { scaleX: 0, transformOrigin: 'left center' },
+          { scaleX: 1, duration: 2.55, ease: 'none' },
+          0.16,
+        )
+        .to(
+          panelRef.current,
+          {
+            y: -4,
+            scale: 1.008,
+            duration: 1.15,
+            ease: 'sine.inOut',
+          },
+          1.65,
+        )
+        .to(
+          rootRef.current,
+          {
+            autoAlpha: 0,
+            scale: 1.015,
+            filter: 'blur(6px)',
+            duration: 0.9,
+            ease: 'sine.inOut',
+          },
+          2.48,
+        )
+    }, rootRef)
+
+    return () => ctx.revert()
+  }, [onComplete, prefersReducedMotion])
 
   return (
-    <motion.div
-      animate={{ opacity: 1 }}
-      className="fixed inset-0 z-[100] overflow-hidden bg-intik-black"
-      exit={{ opacity: 0, scale: 1.03, filter: 'blur(8px)' }}
-      initial={{ opacity: 0 }}
-    >
-      <motion.div
-        animate={{ scale: 1.08, opacity: 1 }}
-        className="absolute inset-0 bg-[linear-gradient(135deg,#050505_0%,#0a0a0a_30%,#121212_65%,#050505_100%)]"
-        initial={{ scale: 1.03, opacity: 0.85 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+    <div className="fixed inset-0 z-[100] overflow-hidden bg-intik-black text-white" ref={rootRef}>
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,#030303_0%,#0b0b0c_36%,#151211_100%)]" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,125,26,0.2),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_24%)]"
+        ref={glowRef}
       />
-      <motion.div
-        animate={{ scale: [0.92, 1.08, 1.02], x: ['-8%', '3%', '0%'], y: ['-5%', '4%', '0%'] }}
-        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,122,0,0.24),transparent_34%)]"
-        transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1] }}
-      />
-      <motion.div
-        animate={{ opacity: [0.12, 0.28, 0.14], scale: [0.9, 1.18, 1.04] }}
-        className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-intik-orange blur-3xl"
-        initial={{ opacity: 0, scale: 0.7 }}
-        transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-      />
-      <motion.div
-        animate={{ y: ['-110%', '110%'] }}
-        className="absolute left-1/2 top-0 h-full w-px bg-gradient-to-b from-transparent via-intik-orange/80 to-transparent opacity-70 blur-[1px]"
-        initial={{ y: '-110%' }}
-        transition={{ duration: 1.2, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-      />
-      <motion.div
-        animate={{ x: '-100%' }}
-        className="absolute inset-y-0 left-0 w-1/2 bg-intik-black"
-        initial={{ x: 0 }}
-        transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
-      />
-      <motion.div
-        animate={{ x: '100%' }}
-        className="absolute inset-y-0 right-0 w-1/2 bg-intik-black"
-        initial={{ x: 0 }}
-        transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
-      />
-
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.04)_50%,transparent_100%)] opacity-60" />
       <div className="relative flex h-full items-center justify-center px-6">
-        <div className="flex max-w-2xl flex-col items-center text-center">
-          <motion.span
-            animate={{ opacity: 1, y: 0 }}
-            className="eyebrow mb-6 border-white/10 text-white/60"
-            initial={{ opacity: 0, y: 16 }}
-            transition={{ duration: 0.55, delay: 0.45 }}
-          >
+        <div
+          className="orange-glow w-full max-w-4xl rounded-[38px] border border-white/10 bg-white/6 p-6 text-center backdrop-blur-[28px] sm:p-10 lg:p-12"
+          ref={panelRef}
+          style={{ transformPerspective: 1600 }}
+        >
+          <span className="eyebrow border-white/10 bg-white/8 text-white/68" ref={eyebrowRef}>
             brand reveal
-          </motion.span>
+          </span>
 
-          <motion.div
-            animate={{ opacity: 1, scale: 1, rotateX: 0, y: 0, filter: 'blur(0px)' }}
-            className="relative overflow-hidden rounded-[34px] border border-white/8 bg-white/5 p-6 backdrop-blur-xl orange-glow"
-            initial={{ opacity: 0, scale: 0.88, rotateX: 18, y: 20, filter: 'blur(18px)' }}
-            transition={{ duration: 1, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformPerspective: 1400 }}
-          >
-            <motion.div
-              animate={{ x: ['-130%', '140%'] }}
-              className="absolute inset-y-0 left-0 w-1/3 skew-x-[-24deg] bg-gradient-to-r from-transparent via-white/35 to-transparent blur-xl"
-              initial={{ x: '-150%' }}
-              transition={{ duration: 1.15, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
-            />
-            <motion.img
+          <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div className="overflow-hidden text-left">
+              <div className="flex flex-wrap justify-center gap-2 text-[4.25rem] leading-[0.84] sm:text-[6rem] lg:justify-start lg:text-[8rem] xl:text-[9.25rem]">
+                {brandLetters.map((letter, index) => (
+                  <span
+                    className="font-display text-white"
+                    key={`${letter}-${index}`}
+                    ref={(node) => {
+                      brandRefs.current[index] = node
+                    }}
+                    style={{ transformOrigin: '50% 100%' }}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-4 flex flex-wrap justify-center gap-3 text-[0.72rem] font-extrabold uppercase tracking-[0.34em] text-white/62 lg:justify-start">
+                {sloganWords.map((word, index) => (
+                  <span
+                    key={word}
+                    ref={(node) => {
+                      sloganRefs.current[index] = node
+                    }}
+                  >
+                    {word}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <img
               alt="Logo INTIK"
-              animate={{ opacity: 1, scale: 1, y: [0, -4, 0] }}
-              className="h-auto w-[260px] sm:w-[360px]"
-              initial={{ opacity: 0, scale: 0.94 }}
+              className="mx-auto h-auto w-[170px] rounded-[28px] bg-white/96 p-3 sm:w-[220px] lg:mx-0"
+              ref={logoRef}
               src={siteMeta.logo}
-              transition={{
-                duration: 1.1,
-                delay: 0.78,
-                ease: [0.16, 1, 0.3, 1],
-                y: {
-                  delay: 1.5,
-                  duration: 1.1,
-                  repeat: 1,
-                  ease: 'easeInOut',
-                },
-              }}
             />
-          </motion.div>
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-            {sloganWords.map((word, index) => (
-              <motion.span
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                className="text-sm font-extrabold uppercase tracking-[0.32em] text-white/68 sm:text-base"
-                initial={{ opacity: 0, y: 14, filter: 'blur(10px)' }}
-                key={word}
-                transition={{ duration: 0.55, delay: 1.15 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {word}
-              </motion.span>
-            ))}
           </div>
 
-          <motion.div
-            animate={{ scaleX: 1, opacity: 1 }}
-            className="mt-8 h-px w-28 origin-center rounded-full bg-gradient-to-r from-transparent via-intik-orange to-transparent"
-            initial={{ scaleX: 0, opacity: 0 }}
-            transition={{ duration: 0.7, delay: 1.45, ease: [0.22, 1, 0.36, 1] }}
+          <div className="mt-8 grid gap-4 text-left text-sm leading-7 text-white/66 sm:grid-cols-2 lg:text-base">
+            <p>
+              A more cinematic first impression for a burger brand that wants to feel sharp, fast, and
+              remembered.
+            </p>
+            <p>
+              Premium motion, clean hierarchy, and a richer brand reveal before the site opens into the
+              main story.
+            </p>
+          </div>
+
+          <div
+            className="mt-8 h-px w-full origin-left rounded-full bg-gradient-to-r from-intik-orange via-white/45 to-transparent"
+            ref={meterRef}
           />
         </div>
       </div>
-
-      <motion.div
-        animate={{ scaleX: [0, 1, 1], opacity: [0.4, 1, 0.85] }}
-        className="absolute bottom-0 left-0 h-[3px] w-full origin-left bg-intik-orange"
-        initial={{ scaleX: 0, opacity: 0 }}
-        transition={{ duration: 2.7, delay: 0.35, ease: 'linear' }}
-      />
-    </motion.div>
+    </div>
   )
 }

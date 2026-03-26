@@ -11,7 +11,7 @@ export default function Contact() {
         <div className="page-shell">
           <Reveal>
             <SectionTitle
-              description="Telephone cliquable, adresse, map et formulaire simple. Si tu veux commander maintenant, le plus rapide reste l’appel."
+              description="Telephone cliquable, adresse, map et formulaire simple. Si tu veux commander maintenant, le plus rapide reste l'appel."
               eyebrow="Contact"
               title="Parle-nous, passe nous voir, ou commande direct."
             />

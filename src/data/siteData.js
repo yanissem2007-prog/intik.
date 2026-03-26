@@ -13,26 +13,29 @@ import videoSix from '../assets/videos/StorySaver.net-intikburgers-Video-1773027
 import videoSeven from '../assets/videos/StorySaver.net-intikburgers-Video-1773027931382.mp4'
 import videoEight from '../assets/videos/StorySaver.net-intikburgers-Video-1773027945720.mp4'
 
+const heroImageWeb =
+  'https://food.yassir.io/prod/public/images/restaurant-plates/80254db6-d63f-44fc-8aab-f0bc9f16bb96.jpg'
+
 export const siteMeta = {
   name: 'INTIK',
   logo,
-  slogan: 'Hungry? We Got You',
-  subline: 'Burgers and fries',
+  slogan: 'Hungry? We Got You.',
+  subline: 'Burgers that hit different.',
   tagline: 'Ton spot burger a Alger.',
   phoneDisplay: '0793331700',
   phoneHref: 'tel:0793331700',
   address: '103 Rue Michelet, Alger centre',
   email: 'contact@intik.dz',
   mapsUrl: 'https://maps.app.goo.gl/YD8BLmcqDtMbuCa99?g_st=ipc',
-  socialBlurb: 'Show love in your story… we’ll show it back 🎁',
-  copyright: '© 2026 INTIK. Tous droits reserves.',
+  socialBlurb: 'Show the drop. Tag the brand. We send the love back.',
+  copyright: '(c) 2026 INTIK. Tous droits reserves.',
 }
 
 export const navLinks = [
   { label: 'Accueil', to: '/' },
   { label: 'Nos Menus', to: '/nos-menus' },
   { label: 'A propos', to: '/a-propos' },
-  { label: 'Besoin d’aide', to: '/besoin-aide' },
+  { label: "Besoin d'aide", to: '/besoin-aide' },
   { label: 'Contact', to: '/contact' },
 ]
 
@@ -51,11 +54,11 @@ export const socialLinks = [
 
 export const heroData = {
   video: videoEight,
-  image: burgerStack,
-  kicker: 'Fast food, but make it iconic.',
+  image: heroImageWeb,
   title: 'Burgers that hit different.',
+  kicker: 'Late-night comfort with a sharper point of view.',
   description:
-    'INTIK mixe street culture, recettes ultra genereuses et image de marque assumee pour une adresse qui se remarque autant qu’elle se deguste.',
+    'INTIK mixes street culture, premium food styling, and serious appetite appeal to create a burger address that feels as considered as the product itself.',
   highlights: [
     'Delivery / Takeaway / Dine-in',
     'Late-night food',
@@ -63,17 +66,18 @@ export const heroData = {
     '0793331700',
   ],
   badges: ['Premium street-food', 'Alger centre', 'Open late'],
+  imageSource: 'https://delivery.yassir.com/fr/restaurant/alger-centre/69202fdc8c4edb2c05fb6659/Intik-Burger',
 }
 
 export const aboutPreview = {
   image: burgerClassic,
-  title: 'Un spot burger moderne, cool et visuel au coeur d’Alger.',
+  title: "Une burger house moderne, visuelle et assumee au coeur d'Alger.",
   description:
-    'INTIK n’est pas juste un fast-food. C’est une energie. Un lieu ou tu viens pour le burger bien charge, la vibe urbaine, le service rapide et ce style de marque qui reste en tete.',
+    "INTIK n'est pas juste un fast-food. C'est une marque avec du rythme, de la presence, et une vraie envie de rendre chaque commande plus memorable.",
   points: [
-    'Recettes genereuses, textures qui claquent et sauces qui signent la difference.',
-    'Une adresse jeune et conviviale pour manger sur place, emporter ou commander.',
-    'Une brand experience pensee pour les reels, les stories et les grosses faims.',
+    'Recettes genereuses, textures franches et sauces qui signent la difference.',
+    'Un spot jeune et rapide pour manger sur place, emporter ou commander.',
+    'Une image pensee pour les reels, les stories et les grosses faims.',
   ],
 }
 
@@ -90,7 +94,7 @@ export const bestSellers = [
     price: '800 DA',
     badge: 'Best Seller',
     image: burgerCrispy,
-    description: 'Poulet pane & fume artisanal, oignons caramelises et sauce tomate-chorizo.',
+    description: 'Poulet pane et fume artisanal, oignons caramelises et sauce tomate-chorizo.',
   },
   {
     name: 'Cheesy AF',
@@ -104,14 +108,14 @@ export const bestSellers = [
     price: '850 DA',
     badge: 'Loaded',
     image: burgerLoaded,
-    description: 'Loaded fries iconiques avec poulet pane & fume artisanal et double sauce.',
+    description: 'Loaded fries iconiques avec poulet pane et fume artisanal et double sauce.',
   },
   {
     name: 'Rage',
     price: '750 DA',
     badge: 'Spicy',
     image: burgerStack,
-    description: 'Boeuf, pastrami, sauce fromage et chorizo pour les vrais gros appetits.',
+    description: 'Boeuf, pastrami, sauce fromage et chorizo pour les vraies grosses faims.',
   },
   {
     name: 'Mamma Mia',
@@ -126,22 +130,22 @@ export const experienceHighlights = [
   {
     icon: 'Bike',
     title: 'Delivery',
-    description: 'Des commandes qui sortent vite, voyagent bien et arrivent encore bien chargees.',
+    description: 'Des commandes qui sortent vite, voyagent bien et arrivent encore chargees.',
   },
   {
     icon: 'UtensilsCrossed',
     title: 'Dine-in',
-    description: 'Un spot moderne a Alger pour manger chill, entre amis, en solo ou en famille.',
+    description: 'Un spot moderne a Alger pour manger chill, seul, en crew ou en famille.',
   },
   {
     icon: 'PackageCheck',
     title: 'Takeaway',
-    description: 'Commande, recupere, bouge. Le retrait est pense pour rester simple et rapide.',
+    description: 'Commande, recupere, repars. Le retrait est pense pour rester simple et rapide.',
   },
   {
     icon: 'Zap',
     title: 'Fast service',
-    description: 'Une execution nette, sans casser la qualite ni l’effet waouh du produit.',
+    description: "Une execution nette, sans casser la qualite ni l'effet waouh du produit.",
   },
   {
     icon: 'MoonStar',
@@ -160,21 +164,21 @@ export const galleryItems = [
     eyebrow: 'Texture shot',
     title: 'Crispy. Cheesy. Loaded.',
     description:
-      'Des buns brillants, des sauces qui coulent juste ce qu’il faut, et cette finition premium qui fait tout le storytelling du produit.',
+      "Des buns brillants, des sauces qui coulent juste ce qu'il faut, et cette finition premium qui raconte deja le produit.",
     image: burgerClassic,
   },
   {
     eyebrow: 'Signature mood',
     title: 'Le genre de burger que tu filmes avant la premiere bite.',
     description:
-      'INTIK travaille autant l’impact visuel que la gourmandise. Ici, chaque plan food raconte quelque chose.',
+      "INTIK travaille autant l'impact visuel que la gourmandise. Ici, chaque plan food raconte quelque chose.",
     image: burgerCrispy,
   },
   {
     eyebrow: 'Street appetite',
     title: 'Un branding urbain, pas un fast-food generique.',
     description:
-      'Le contraste noir, blanc, orange et la vibe street font d’INTIK une marque qui s’assume pleinement.',
+      "Le contraste noir, blanc et orange donne a INTIK une image qui s'assume pleinement.",
     image: burgerCheesy,
   },
   {
@@ -188,7 +192,7 @@ export const galleryItems = [
     eyebrow: 'Food identity',
     title: 'Ton spot burger a Alger.',
     description:
-      'Manger sur place, emporter ou se faire livrer: la meme vibe INTIK, la meme faim satisfaite.',
+      'Sur place, a emporter ou en livraison, la meme vibe INTIK et la meme faim satisfaite.',
     image: burgerStack,
   },
 ]
@@ -197,7 +201,7 @@ export const brandVideos = [
   {
     src: videoOne,
     title: 'Street motion',
-    description: 'Des micro-moments food qui respirent l’energie et le mouvement.',
+    description: "Des micro-moments food qui respirent l'energie et le mouvement.",
   },
   {
     src: videoTwo,
@@ -222,12 +226,12 @@ export const brandVideos = [
   {
     src: videoSix,
     title: 'Premium casual',
-    description: 'L’univers INTIK reste jeune, cool et propre sans jamais tomber dans le cheap.',
+    description: "L'univers INTIK reste jeune, propre et net sans jamais tomber dans le cheap.",
   },
   {
     src: videoSeven,
     title: 'Burger culture',
-    description: 'Un format social-first qui marche aussi en web premium.',
+    description: 'Un format social-first qui garde de la tenue en web premium.',
   },
   {
     src: videoEight,
@@ -285,7 +289,7 @@ export const practicalInfo = [
   {
     icon: 'Dog',
     title: 'Dogs allowed outside',
-    description: 'Les chiens sont les bienvenus a l’exterieur.',
+    description: "Les chiens sont les bienvenus a l'exterieur.",
   },
 ]
 
@@ -294,11 +298,11 @@ export const aboutStorySections = [
     eyebrow: 'Notre vibe',
     title: 'Une identite street, nette et premium.',
     description:
-      'INTIK assume une image forte: contraste eleve, branding orange-noir-blanc, produits ultra visuels et tonalite jeune qui parle directement a la ville.',
+      "INTIK assume une image forte: contraste eleve, branding orange-noir-blanc, produits ultra visuels et tonalite jeune qui parle directement a la ville.",
     points: [
       'Un langage visuel moderne, inspire de la culture food et du social content.',
       'Une marque qui peut vivre aussi bien sur une facade que dans une story Instagram.',
-      'Une direction artistique qui rend le fast-food plus desire, plus propre, plus memorisable.',
+      'Une direction artistique qui rend le fast-food plus desire, plus propre et plus memorisable.',
     ],
     mediaType: 'image',
     media: burgerClassic,
@@ -334,10 +338,10 @@ export const aboutStorySections = [
 export const brandPromises = [
   {
     title: 'Pourquoi INTIK',
-    description: 'Parce qu’on ne voulait pas un fast-food sans visage. On voulait une vraie signature.',
+    description: "Parce qu'on ne voulait pas un fast-food sans visage. On voulait une vraie signature.",
   },
   {
-    title: 'Ce qu’on sert',
+    title: "Ce qu'on sert",
     description: 'Des burgers, loaded fries et pasta qui vont direct au but: gourmandise et attitude.',
   },
   {

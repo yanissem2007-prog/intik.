@@ -19,7 +19,7 @@ const routeTitles = {
   '/': 'INTIK | Hungry? We Got You',
   '/nos-menus': 'Nos Menus | INTIK',
   '/a-propos': 'A propos | INTIK',
-  '/besoin-aide': 'Besoin d’aide | INTIK',
+  '/besoin-aide': "Besoin d'aide | INTIK",
   '/contact': 'Contact | INTIK',
 }
 
@@ -34,62 +34,60 @@ function AppShell() {
 
   return (
     <div className="min-h-screen bg-intik-paper text-intik-black">
-      <AnimatePresence>
-        {showIntro ? <IntroScreen onComplete={() => setShowIntro(false)} /> : null}
-      </AnimatePresence>
+      <AnimatePresence>{showIntro ? <IntroScreen onComplete={() => setShowIntro(false)} /> : null}</AnimatePresence>
 
       <Navbar />
 
       <main className="overflow-hidden">
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
+          <Routes key={location.pathname} location={location}>
             <Route
-              path="/"
               element={
                 <PageTransition>
-                  <Home />
+                  <Home introComplete={!showIntro} />
                 </PageTransition>
               }
+              path="/"
             />
             <Route
-              path="/nos-menus"
               element={
                 <PageTransition>
                   <Menu />
                 </PageTransition>
               }
+              path="/nos-menus"
             />
             <Route
-              path="/a-propos"
               element={
                 <PageTransition>
                   <About />
                 </PageTransition>
               }
+              path="/a-propos"
             />
             <Route
-              path="/besoin-aide"
               element={
                 <PageTransition>
                   <Help />
                 </PageTransition>
               }
+              path="/besoin-aide"
             />
             <Route
-              path="/contact"
               element={
                 <PageTransition>
                   <Contact />
                 </PageTransition>
               }
+              path="/contact"
             />
             <Route
-              path="*"
               element={
                 <PageTransition>
                   <NotFound />
                 </PageTransition>
               }
+              path="*"
             />
           </Routes>
         </AnimatePresence>
@@ -98,14 +96,14 @@ function AppShell() {
       <Footer />
 
       <motion.div
+        animate={{ opacity: 1, y: 0 }}
         className="pointer-events-none fixed inset-x-0 bottom-5 z-40 flex justify-start px-4 sm:px-6"
         initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: 2.2 }}
+        transition={{ delay: 2.2, duration: 0.45 }}
       >
         <a
-          href={siteMeta.phoneHref}
           className="pointer-events-auto inline-flex items-center gap-3 rounded-full bg-intik-black px-5 py-3 text-sm font-extrabold uppercase tracking-[0.24em] text-white shadow-[0_20px_50px_rgba(10,10,10,0.2)] transition-transform duration-300 hover:-translate-y-1 hover:bg-intik-orange hover:text-intik-black"
+          href={siteMeta.phoneHref}
         >
           <ShoppingBag size={16} />
           Commander

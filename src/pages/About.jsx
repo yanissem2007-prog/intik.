@@ -23,22 +23,12 @@ export default function About() {
       <section className="section-space">
         <div className="page-shell space-y-16">
           {aboutStorySections.map((section, index) => (
-            <div
-              className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center"
-              key={section.title}
-            >
+            <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center" key={section.title}>
               <Reveal className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <SectionTitle
-                  description={section.description}
-                  eyebrow={section.eyebrow}
-                  title={section.title}
-                />
+                <SectionTitle description={section.description} eyebrow={section.eyebrow} title={section.title} />
                 <div className="mt-8 grid gap-3">
                   {section.points.map((point) => (
-                    <div
-                      className="glass-panel px-5 py-4 text-sm leading-7 text-black/66"
-                      key={point}
-                    >
+                    <div className="glass-panel px-5 py-4 text-sm leading-7 text-black/66" key={point}>
                       {point}
                     </div>
                   ))}
@@ -57,11 +47,7 @@ export default function About() {
                       src={section.media}
                     />
                   ) : (
-                    <img
-                      alt={section.title}
-                      className="aspect-[4/4.5] w-full object-cover"
-                      src={section.media}
-                    />
+                    <img alt={section.title} className="aspect-[4/4.5] w-full object-cover" src={section.media} />
                   )}
                 </div>
               </Reveal>
@@ -74,7 +60,7 @@ export default function About() {
         <div className="page-shell">
           <Reveal>
             <SectionTitle
-              description="Pourquoi INTIK existe, ce qu’on veut faire ressentir et pour qui le spot a ete pense."
+              description="Pourquoi INTIK existe, ce qu'on veut faire ressentir et pour qui le spot a ete pense."
               eyebrow="Pourquoi INTIK"
               light
               title="Une food identity qui ne joue pas petit."
@@ -109,7 +95,10 @@ export default function About() {
               <h3 className="font-display text-5xl leading-none sm:text-6xl">Pour qui est INTIK ?</h3>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {audienceProfiles.map((profile) => (
-                  <div className="rounded-[24px] border border-white/8 bg-white/5 px-5 py-4 text-sm leading-7 text-white/72" key={profile}>
+                  <div
+                    className="rounded-[24px] border border-white/8 bg-white/5 px-5 py-4 text-sm leading-7 text-white/72"
+                    key={profile}
+                  >
                     {profile}
                   </div>
                 ))}

@@ -26,7 +26,7 @@ export default function ContactInfo() {
     {
       icon: Send,
       title: 'Maps',
-      value: 'Ouvrir l’itineraire',
+      value: "Ouvrir l'itineraire",
       href: siteMeta.mapsUrl,
       external: true,
     },

@@ -37,7 +37,7 @@ export const menuCategories = [
       {
         name: 'Bad Girl',
         price: '800',
-        description: 'Poulet pane & fume artisanal, fromage, oignons caramelises, sauce tomate-chorizo',
+        description: 'Poulet pane et fume artisanal, fromage, oignons caramelises, sauce tomate-chorizo',
         badge: 'Best Seller',
       },
       {
@@ -68,7 +68,7 @@ export const menuCategories = [
       {
         name: 'Butter Chicken',
         price: '750',
-        description: 'Poulet, sauce cremeuse au beurre & epices douces',
+        description: 'Poulet, sauce cremeuse au beurre et epices douces',
         badge: 'Creamy',
       },
       {
@@ -86,7 +86,7 @@ export const menuCategories = [
       {
         name: 'Badass',
         price: '850',
-        description: 'Poulet pane & fume artisanal, sauce tomate-chorizo & fromagere, fromage gratine',
+        description: 'Poulet pane et fume artisanal, sauce tomate-chorizo et fromagere, fromage gratine',
         badge: 'Best Seller',
       },
     ],
@@ -94,7 +94,7 @@ export const menuCategories = [
   {
     id: 'pasta',
     title: 'Pasta',
-    intro: 'Le move comfort d’INTIK: tagliatelle, sauce, proteins et couche gratinee.',
+    intro: "Le move comfort d'INTIK: tagliatelle, sauce, proteins et couche gratinee.",
     items: [
       {
         name: 'Mamma Mia',
@@ -136,7 +136,7 @@ export const menuCategories = [
       {
         name: 'Crispy Balls',
         price: '500',
-        description: 'Poulet / boeuf / cheese selon disponibilite + sauce — x6 pcs',
+        description: 'Poulet / boeuf / cheese selon disponibilite + sauce - x6 pcs',
         badge: 'Share',
       },
     ],
@@ -198,7 +198,7 @@ export const deliveryAreas = [
   { area: 'Hussein Dey', fee: '500 DA - 700 DA' },
   { area: 'Bouzareah', fee: '550 DA - 750 DA' },
   { area: 'Bab Ezzouar', fee: '600 DA - 800 DA' },
-  { area: 'Fort de l’Eau', fee: '600 DA - 800 DA' },
+  { area: "Fort de l'Eau", fee: '600 DA - 800 DA' },
   { area: 'Dar El Beida', fee: '600 DA - 800 DA' },
   { area: 'Ouled Fayet', fee: '700 DA - 900 DA' },
   { area: 'Cheraga', fee: '700 DA - 900 DA' },

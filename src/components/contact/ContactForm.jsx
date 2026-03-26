@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { siteMeta } from '../../data/siteData'
 import Button from '../ui/Button'
 
 const initialState = {
@@ -19,6 +20,19 @@ export default function ContactForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+
+    const subject = encodeURIComponent(`INTIK contact - ${form.name}`)
+    const body = encodeURIComponent(
+      [
+        `Nom: ${form.name}`,
+        `Telephone: ${form.phone}`,
+        '',
+        'Message:',
+        form.message,
+      ].join('\n'),
+    )
+
+    window.location.href = `mailto:${siteMeta.email}?subject=${subject}&body=${body}`
     setSubmitted(true)
     setForm(initialState)
   }
@@ -30,7 +44,7 @@ export default function ContactForm() {
         <h2 className="mt-4 font-display text-5xl leading-none text-intik-black">On te repond vite.</h2>
         <p className="mt-4 text-sm leading-7 text-black/64">
           Laisse ton nom, ton numero et ton message. Pour commander rapidement, le plus direct reste
-          toujours l’appel.
+          toujours l'appel.
         </p>
       </div>
 
@@ -67,7 +81,7 @@ export default function ContactForm() {
             className="input-field min-h-[160px] resize-y"
             name="message"
             onChange={handleChange}
-            placeholder="Dis-nous ce qu’il te faut."
+            placeholder="Dis-nous ce qu'il te faut."
             required
             value={form.message}
           />
@@ -75,18 +89,22 @@ export default function ContactForm() {
 
         <div className="flex flex-col gap-3 pt-2 sm:flex-row">
           <Button size="lg" type="submit">
-            Envoyer
+            Ouvrir l'email
           </Button>
-          <Button href="tel:0793331700" size="lg" variant="outline">
+          <Button href={siteMeta.phoneHref} size="lg" variant="outline">
             Commander maintenant
           </Button>
         </div>
 
         {submitted ? (
           <p className="rounded-2xl bg-intik-orange/12 px-4 py-3 text-sm text-intik-black">
-            Message pret. Pour une commande immediate, appelle directement INTIK au 0793331700.
+            Brouillon email pret. Pour une commande immediate, appelle directement INTIK au 0793331700.
           </p>
-        ) : null}
+        ) : (
+          <p className="text-sm leading-7 text-black/50">
+            Ce formulaire ouvre ton application email avec le message deja prepare.
+          </p>
+        )}
       </form>
     </div>
   )
