@@ -1,51 +1,9 @@
-import { ArrowRight, Clock3, MapPin, Phone } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useLayoutEffect, useRef } from 'react'
 import usePrefersReducedMotion from '../../hooks/usePrefersReducedMotion'
 import { setupGsap } from '../../lib/animations/gsap'
-import { heroData, siteMeta } from '../../data/siteData'
+import { heroData } from '../../data/siteData'
 import Button from '../ui/Button'
-
-const stageCards = [
-  {
-    icon: Clock3,
-    label: 'Open late',
-    value: 'Night-friendly service with a cleaner, premium rhythm.',
-    className: 'top-[8%] right-[-2%] xl:right-[-7%]',
-  },
-  {
-    icon: MapPin,
-    label: 'Michelet',
-    value: '103 Rue Michelet, Alger centre.',
-    className: 'bottom-[12%] left-[-1%] xl:left-[-8%]',
-  },
-  {
-    icon: Phone,
-    label: 'Commander',
-    value: siteMeta.phoneDisplay,
-    className: 'bottom-[-3%] right-[4%] xl:right-[-4%]',
-  },
-]
-
-const serviceCards = [
-  {
-    icon: MapPin,
-    label: 'Adresse',
-    value: siteMeta.address,
-    href: siteMeta.mapsUrl,
-    external: true,
-  },
-  {
-    icon: Phone,
-    label: 'Commande',
-    value: siteMeta.phoneDisplay,
-    href: siteMeta.phoneHref,
-  },
-  {
-    icon: Clock3,
-    label: 'Service',
-    value: 'Delivery / Dine-in / Takeaway',
-  },
-]
 
 export default function HeroSection({ introComplete = true }) {
   const sectionRef = useRef(null)
@@ -59,9 +17,7 @@ export default function HeroSection({ introComplete = true }) {
   const ctaRef = useRef(null)
   const railRef = useRef(null)
   const glowRef = useRef(null)
-  const serviceRefs = useRef([])
   const chipRefs = useRef([])
-  const floatingRefs = useRef([])
   const headingRefs = useRef([])
   const prefersReducedMotion = usePrefersReducedMotion()
 
@@ -80,9 +36,7 @@ export default function HeroSection({ introComplete = true }) {
           taglineRef.current,
           descriptionRef.current,
           ctaRef.current,
-          ...serviceRefs.current,
           mediaFrameRef.current,
-          ...floatingRefs.current,
           ...chipRefs.current,
         ],
         {
@@ -160,18 +114,6 @@ export default function HeroSection({ introComplete = true }) {
           0.34,
         )
         .fromTo(
-          floatingRefs.current,
-          { autoAlpha: 0, y: 22, scale: 0.96 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 0.82, stagger: 0.12 },
-          0.92,
-        )
-        .fromTo(
-          serviceRefs.current,
-          { autoAlpha: 0, y: 18, filter: 'blur(8px)' },
-          { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: 0.82, stagger: 0.08 },
-          0.96,
-        )
-        .fromTo(
           chipRefs.current,
           { autoAlpha: 0, y: 10 },
           { autoAlpha: 1, y: 0, duration: 0.56, stagger: 0.05 },
@@ -223,16 +165,6 @@ export default function HeroSection({ introComplete = true }) {
         },
       })
 
-      floatingRefs.current.forEach((card, index) => {
-        gsap.to(card, {
-          y: index % 2 === 0 ? -8 : 8,
-          x: index === 1 ? -4 : 4,
-          repeat: -1,
-          yoyo: true,
-          duration: 3.6 + index * 0.45,
-          ease: 'sine.inOut',
-        })
-      })
     }, sectionRef)
 
     return () => ctx.revert()
@@ -319,40 +251,7 @@ export default function HeroSection({ introComplete = true }) {
               </Button>
             </div>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
-              {serviceCards.map((item, index) => {
-                const Icon = item.icon
-
-                return (
-                  <div
-                    className="rounded-[28px] border border-white/10 bg-white/8 p-5 backdrop-blur-xl"
-                    key={item.label}
-                    ref={(node) => {
-                      serviceRefs.current[index] = node
-                    }}
-                  >
-                    <div className="mb-3 flex items-center gap-3 text-intik-orange">
-                      <Icon size={18} />
-                      <span className="text-xs font-bold uppercase tracking-[0.22em]">{item.label}</span>
-                    </div>
-                    {item.href ? (
-                      <a
-                        className="text-lg font-bold text-white transition hover:text-intik-orange"
-                        href={item.href}
-                        rel={item.external ? 'noreferrer' : undefined}
-                        target={item.external ? '_blank' : undefined}
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-lg font-bold text-white">{item.value}</p>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-10 flex flex-wrap gap-2">
               {heroData.highlights.map((item, index) => (
                 <span
                   className="rounded-full border border-white/10 bg-intik-black/28 px-4 py-2 text-sm text-white/72 backdrop-blur-xl"
@@ -401,28 +300,6 @@ export default function HeroSection({ introComplete = true }) {
                 </div>
               </div>
             </div>
-
-            {stageCards.map((item, index) => {
-              const Icon = item.icon
-
-              return (
-                <div
-                  className={`absolute hidden max-w-[15rem] rounded-[28px] border border-white/10 bg-black/32 p-4 text-white backdrop-blur-xl lg:block ${item.className}`}
-                  key={item.label}
-                  ref={(node) => {
-                    floatingRefs.current[index] = node
-                  }}
-                >
-                  <div className="mb-3 inline-flex rounded-2xl bg-intik-orange p-2.5 text-intik-black">
-                    <Icon size={16} />
-                  </div>
-                  <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.28em] text-white/54">
-                    {item.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-white/78">{item.value}</p>
-                </div>
-              )
-            })}
           </div>
         </div>
 
